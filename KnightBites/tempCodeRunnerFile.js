@@ -1,0 +1,1 @@
+censoredText = censoredText.replace(regex, '*'.repeat(word.length));

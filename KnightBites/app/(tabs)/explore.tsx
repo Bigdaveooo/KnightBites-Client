@@ -1,102 +1,59 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, Image, Platform } from 'react-native';
+// This is the about page, accessed from the bottom button that says "About"
+// This is a simple page that explains some of the goals of the app (from the vision statement), has a small tutorial, and credits the authors.
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import styles from '@/constants/Styles';
 
-export default function TabTwoScreen() {
+export default function DetailsPage() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={<Ionicons size={310} name="code-slash" style={styles.headerImage} />}>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user's current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText> library
-          to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+    <View style={styles.aboutPageContainer}>
+      <View style={{ height: 16 }} />
+      <View style={{ backgroundColor: 'maroon', padding: 10, position: 'absolute', top: 0, left: 0, right: 0, height: 60, justifyContent: 'center' }}>
+      </View>
+      {/* 'absolute' position includes the top part of the iOS screen that includes the time. */}
+      <View style={{ backgroundColor: 'maroon', padding: 10, position: 'sticky', top: 0, left: 0, right: 0, height: 60, justifyContent: 'center' }}>
+        <Text style={{ color: 'gold', textAlign: 'center', fontSize: 24, fontWeight: 'bold' }}>KnightBites</Text>
+      </View>
+      {/* 'sticky' position sets the banner for the rest of the page. Needs both 'absolute' and 'sticky' to look nice. */}
+
+      <View style={styles.aboutPageSection}>
+        <Text style={{ textAlign: 'center' }}> {/* All text on the page is centered. */}
+          <Text style={{ fontWeight: 'bold' }}>
+            {'\n'}Welcome to KnightBites!{'\n'}
+          </Text>
+          We want this app to serve as a forum for Calvin students to rank and review the food served at the dining halls on campus.
+          {'\n\n'}
+          Our goal is to provide a platform for students to share their opinions and experiences with the Calvin community.
+          {'\n\n'}
+          Our hope is that this app will help students make informed decisions about where to eat on campus.
+          {'\n\n'}
+
+          <Text style={{ fontWeight: 'bold' }}>
+            {'\n'}How to use KnightBites:
+          </Text>
+          {'\n'}
+          1. Click on the "Home" tab to view the dishes available. You can also filter by dining hall.
+          {'\n\n'}
+          2. Click on a dish to view more information about it.
+          {'\n\n'}
+          3. Write a review and rate the dish a rating 1-5 stars.
+          {'\n\n'}
+          Enjoy! (This text can be updated as needed.)
+        </Text>
+
+
+      </View>
+      <View style={{ backgroundColor: 'maroon', padding: 10 }}>
+        <Text style={{ color: 'white', textAlign: 'center' }}>
+          Developed by the KnightBites Team:{'\n'}
+          Kenny Howes, Lily McAboy
+          {'\n'}
+          Jacob Tocila, Peter Lund
+          {'\n'}
+          David Barry, Lujia Li
+        </Text>
+      </View>
+    </View> //End of container
   );
 }
-
-const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
-  },
-});

@@ -12,6 +12,9 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarStyle: {
+          backgroundColor: "#800000"
+        },
         headerShown: false,
       }}>
       <Tabs.Screen
@@ -24,11 +27,22 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="build-a-wich"
+        options={{
+          title: 'Build-a-Wich',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'fast-food' : 'fast-food-outline'} color={color} />
+            // https://ionic.io/ionicons is where you can find the names of the icons such as 'help-circle-outline'
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="explore"
         options={{
-          title: 'Explore',
+          title: 'About',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'help-circle' : 'help-circle-outline'} color={color} />
+            // https://ionic.io/ionicons is where you can find the names of the icons such as 'help-circle-outline'
           ),
         }}
       />

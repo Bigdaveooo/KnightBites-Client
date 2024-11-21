@@ -1,0 +1,19 @@
+name: Pull Request Workflow
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Slack Notification
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          slack-message: "A new pull request has been created: <${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}> by @${{ github.event.pull_request.user.login }}. Please reject or approve this request."
+          channel-id: C07LYU7R1QS
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}  # Reference secret securely
+
